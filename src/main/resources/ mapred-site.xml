@@ -1,0 +1,6 @@
+<configuration>
+<property>   
+ <name>url.blacklist.keywords</name>  
+ <value>/home/xavier/workspace/Hadoop_TFIDF/blacklist.txt</value>  
+ </property>   
+</configuration>

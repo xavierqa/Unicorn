@@ -33,11 +33,13 @@
 			<artifactId>weka-stable</artifactId>
 			<version>3.6.11</version>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>nz.ac.waikato.cms.weka.snowball</groupId>
 			<artifactId>weka-snowball</artifactId>
 			<version>0.1</version>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>edu.stanford.nlp</groupId>
 			<artifactId>stanford-corenlp</artifactId>
@@ -106,12 +108,7 @@
 		<version>4.10</version>
 		<scope>test</scope>
 	</dependency>
-	<dependency>
-		<groupId>jdk.tools</groupId>
-		<artifactId>jdk.tools</artifactId>
-		<version>1.6</version>
-		<scope>compile</scope>
-	</dependency>
+	
 </dependencies>
 	<pluginRepositories>
 		<pluginRepository>
@@ -127,28 +124,28 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
-		<sourceDirectory>/home/xavier/workspace/Hadoop_TFIDF/src/main/java</sourceDirectory>
-		<scriptSourceDirectory>/home/xavier/workspace/Hadoop_TFIDF/src/main/scripts</scriptSourceDirectory>
-		<testSourceDirectory>/home/xavier/workspace/Hadoop_TFIDF/src/test/java</testSourceDirectory>
-		<outputDirectory>/home/xavier/workspace/Hadoop_TFIDF/target/classes</outputDirectory>
-		<testOutputDirectory>/home/xavier/workspace/Hadoop_TFIDF/target/test-classes</testOutputDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<outputDirectory>target/classes</outputDirectory>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
 		<resources>
 			<resource>
-				<directory>/home/xavier/workspace/Hadoop_TFIDF/src/main/config</directory>
+				<directory>src/main/config</directory>
 			</resource>
 			<resource>
-				<directory>/home/xavier/workspace/Hadoop_TFIDF/src/resources</directory>
+				<directory>src/resources</directory>
 			</resource>
 		</resources>
 		<testResources>
 			<testResource>
-				<directory>/home/xavier/workspace/Hadoop_TFIDF/src/test/resources/</directory>
+				<directory>src/test/resources/</directory>
 			</testResource>
 			<testResource>
-				<directory>/home/xavier/workspace/Hadoop_TFIDF/lib/</directory>
+				<directory>lib/</directory>
 			</testResource>
 		</testResources>
-		<directory>/home/xavier/workspace/Hadoop_TFIDF/target</directory>
+		<directory>target</directory>
 		<finalName>orange-unicorn</finalName>
 		<pluginManagement>
 			<plugins>
@@ -229,7 +226,7 @@
 						</goals>
 						<configuration>
 							<additionalClasspathElements>
-								<additionalClasspathElement>/home/xavier/workspace/Hadoop_TFIDF/src/test/resources/edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger</additionalClasspathElement>
+								<additionalClasspathElement>src/test/resources/edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger</additionalClasspathElement>
 							</additionalClasspathElements>
 						</configuration>
 					</execution>
@@ -311,7 +308,7 @@
 							<goal>site</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>/home/xavier/workspace/Hadoop_TFIDF/target/site</outputDirectory>
+							<outputDirectory>target/site</outputDirectory>
 							<reportPlugins>
 								<reportPlugin>
 									<groupId>org.apache.maven.plugins</groupId>
@@ -327,7 +324,7 @@
 							<goal>deploy</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>/home/xavier/workspace/Hadoop_TFIDF/target/site</outputDirectory>
+							<outputDirectory>target/site</outputDirectory>
 							<reportPlugins>
 								<reportPlugin>
 									<groupId>org.apache.maven.plugins</groupId>
@@ -338,7 +335,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<outputDirectory>/home/xavier/workspace/Hadoop_TFIDF/target/site</outputDirectory>
+					<outputDirectory>target/site</outputDirectory>
 					<reportPlugins>
 						<reportPlugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -350,6 +347,6 @@
 		</plugins>
 	</build>
 	<reporting>
-		<outputDirectory>/home/xavier/workspace/Hadoop_TFIDF/target/site</outputDirectory>
+		<outputDirectory>target/site</outputDirectory>
 	</reporting>
 </project>

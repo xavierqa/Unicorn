@@ -16,6 +16,10 @@ OUTPUTTFIDF=unicorn_tfidf_n
 OUTPUTVECTOR=unicorn_vector
 
 #NUTCH HOME
+
+URLSEED=/home/xavier/nutch/nutch/runtime/local/urls
+CRAWLEROUTPUT=/home/xavier/nutch/nutch/runtime/crawlerouput
+DEEP=1
 NUTCHHOME=/home/xavier/nutch/nutch/runtime/local
 export JAVA_HOME=/usr/lib/jvm/default-java
 
@@ -61,6 +65,10 @@ do
 	echo $input
 	
 case "$input" in
+	CRAWL)
+		echo "crawling starting"
+		 $NUTCHHOME/bin/crawl $URLSEED $CRAWLEROUTPUT -depth ${DEEP}
+
 	URL)
 		echo "Counting total Number of documents"
 		totaldocuments=$(getTotalFetchedDocument)

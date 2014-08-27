@@ -1,0 +1,27 @@
+<assembly>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<fileSets>
+		<fileSet>
+			<includes>
+				<include>README*</include>
+			</includes>
+		</fileSet>
+		
+		<fileSet>
+			<directory>src/scripts</directory>
+			<outputDirectory>scripts</outputDirectory>
+			<includes>
+				<include>*.ser.gz</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>target</directory>
+			<outputDirectory>lib</outputDirectory>
+			<includes>
+				<include>orange-unicorn.jar</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>

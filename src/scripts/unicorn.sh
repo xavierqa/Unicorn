@@ -7,6 +7,8 @@
 #fi
 
 
+UNICORN_HOME=$UNICORN_HOME
+
 OUTPUTURL=unicorn_url_n
 OUTPUTTF=unicorn_tf_n
 OUTPUTIDF=unicorn_idf_n
@@ -65,14 +67,14 @@ case "$input" in
 		echo "TOTAL DOCUMENTS" $totaldocuments
 #		deleteOutput $OUTPUTURL		
 #		SEGMENTS=$(getSegments)
-#		bin/hadoop jar  /home/xavier/workspace/Hadoop_TFIDF/target/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.URLDriver \
+#		bin/hadoop jar  $UNICORN_HOME/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.URLDriver \
 #		-crawldb ${CRAWLDB} -linkdb ${LINKDB} -dir ${SEGMENTS} -output ${OUTPUTURL}
 #		echo "TFIDF"
 		;;	
 	TF)
 		deleteOutput ${OUTPUTTF}
 		SEGMENTS=$(getSegments)
-		bin/hadoop jar  /home/xavier/workspace/Hadoop_TFIDF/target/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.TFDriver \
+		bin/hadoop jar  $UNICORN_HOME/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.TFDriver \
 		-crawldb ${CRAWLDB} -linkdb ${LINKDB} -dir ${SEGMENTS} -output ${OUTPUTTF}
 		echo "TFIDF"
 		;;
@@ -86,14 +88,14 @@ case "$input" in
 			exit 1
 		fi
 		deleteOutput ${OUTPUTIDF}
-		bin/hadoop jar  /home/xavier/workspace/Hadoop_TFIDF/target/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.IDFDriver \
+		bin/hadoop jar  $UNICORN_HOME/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.IDFDriver \
 		-input ${OUTPUTTF} -total $VAL -output ${OUTPUTIDF} 
 		;;
 
 	VECTOR)
 
 		deleteOutput ${OUTPUTVECTOR}
-		bin/hadoop jar  /home/xavier/workspace/Hadoop_TFIDF/target/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.VectorTFIDFDriver \
+		bin/hadoop jar  $UNICORN_HOME/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.VectorTFIDFDriver \
 		-input ${OUTPUTIDF} -output ${OUTPUTVECTOR}
 		;;
 	*)
@@ -106,8 +108,3 @@ done
 
 
 
-#rm -rf $OUTPUT
-#bin/hadoop jar  /home/xavier/workspace/Hadoop_TFIDF/target/orange-unicorn-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.orange.tfidf.URLDriver ${CRAWLDB} ${LINKDB} ${SEGMENTS} ${OUTPUTPATH}
-#$englishPCFG $sentiment $TWITTERFILE $OUTPUT -libjars ${LIBJARS}
-#echo $sentimentJAR
-#java -cp $sentimentJAR com.orange.analysis.twitter.KeyBasedTweets "twitterdata.txt" "#NBA,#playoffs" $OAuthConsumerKey $OAuthConsumerSecret $OAuthAccessToken $OAuthAccessTokenSecret

@@ -24,7 +24,7 @@ NUTCHHOME=/home/xavier/nutch/nutch/runtime/local
 export JAVA_HOME=/usr/lib/jvm/default-java
 
 
-BASEDIR="/home/xavier/nutch/nutch/runtime/local/output1"
+BASEDIR=$CRAWLEROUTPUT
 CRAWLDB=${BASEDIR}/crawldb/current
 LINKDB=${BASEDIR}/linkdb/current
 SEGMENTSDIR=${BASEDIR}/segments/
@@ -68,6 +68,7 @@ case "$input" in
 	CRAWL)
 		echo "crawling starting"
 		 $NUTCHHOME/bin/crawl $URLSEED $CRAWLEROUTPUT -depth ${DEEP}
+		 ;;
 
 	URL)
 		echo "Counting total Number of documents"

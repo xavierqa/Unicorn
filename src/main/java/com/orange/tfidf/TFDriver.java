@@ -25,7 +25,7 @@ public class TFDriver extends Configured implements Tool {
 
 	public static Logger LOG = LoggerFactory.getLogger(TFDriver.class);
 
-	private String blacklist = "/home/xavier/workspace/Hadoop_TFIDF/blacklist.txt";
+	//private String blacklist = "/home/xavier/workspace/Hadoop_TFIDF/blacklist.txt";
 
 	@Override
 	public int run(String[] args) throws Exception {
@@ -33,33 +33,41 @@ public class TFDriver extends Configured implements Tool {
 
 		if (args.length < 2) {
 			System.err
-					.println("Usage:  -crawldb <crawldb> -linkdb <linkdb> -dir <segment> -output <dir>");
+					.println("Usage:  -crawldb <crawldb> -linkdb <linkdb> -dir <segment> -output <dir> -blacklist<blacklist.txt>");
 			return -1;
 		}
 		Path linkDb = null;
 		Path crawlDb = null;
 		String outputdir = null;
 		List<Path> segments = new ArrayList<Path>();
-
+		String blacklist =null;
+		LOG.info("TFDriver");
 		for (int i = 0; i < args.length; i++) {
 			LOG.info("argument[{}]", args[i]);
 			if (args[i].equals("-linkdb")) {
-				LOG.info("path: linkdb:" + args[i++]);
-				linkDb = new Path(args[i++]);
+				linkDb = new Path(args[++i]);
+				LOG.info("path: linkdb:" + linkDb.toString());
 			} else if (args[i].equals("-dir")) {
 				Path ps = new Path(args[++i]);
 				segments = Arrays.asList(ps);
 			} else if (args[i].equals("-crawldb")) {
-				LOG.info("path" + args[i++]);
-				crawlDb = new Path(args[i++]);
+				crawlDb = new Path(args[++i]);
+				LOG.info("crawldb {}" + crawlDb.toString());
 			} else if (args[i].equals("-output")) {
-				LOG.info("path" + args[i++]);
-				outputdir = args[i++];
+				outputdir = args[++i];
+				LOG.info("outputdir {}", outputdir);
+			} else if (args[i].equals("-blacklist")){
+				blacklist = args[++i];
+				LOG.info("blacklist {}", blacklist);
 			}
 		}
 
 		if (crawlDb == null) {
 			LOG.info("ERROR crawldb is null");
+			return -1;
+		}
+		if (blacklist == null){
+			LOG.info("ERROR blacklist can not be null");
 			return -1;
 		}
 

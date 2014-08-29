@@ -34,15 +34,17 @@ public class TestTF {
 	public static Logger LOG = LoggerFactory.getLogger(TestTF.class);
 
 	
-	//@Test
+	@Test
 	public void readMetadata() throws Exception{
-		String base = "/home/xavier/nutch/nutch/runtime/local/crawl.tst";
+		String base = "/home/xavier/nutchTest/nutch/runtime/local/output";
 		String crawldb = base+"/crawldb";
 		String linkdb = base+"/linkdb";
-		String segments = base+"/segments/20140806164043/";
-		String output = "/home/xavier/hadoop2.4/hadoop-2.4.0/unicorn";
+		String segments = base+"/segments/20140829085003/";
+		String output = "/home/xavier/hadoop/hadoop-2.5.0/unicorn";
+		String blacklist = "/home/xavier/workspace/Unicorn/blacklist.txt";
 		FileUtils.deleteDirectory(new File(output));
-		String []args = {"-crawldb", crawldb, "-linkdb", linkdb, "-dir", segments, "-output",output};
+		LOG.debug("Running Test");
+		String []args = {"-crawldb", crawldb, "-linkdb", linkdb, "-dir", segments, "-output",output,"-blacklist",blacklist};
         TFDriver.main(args);
 	}
 	

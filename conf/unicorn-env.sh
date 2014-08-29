@@ -19,9 +19,13 @@ fi
 
 
 if [ -z $UNICORN_HOME ]; then
-        UNICORN_HOME=/home/xavier/workspace/Hadoop_TFIDF
+        UNICORN_HOME=/home/xavier/workspace/Unicorn/target
 fi
 
+
+if [ -z $HADOOP_HOME ]; then
+	HADOOP_HOME=/home/xavier/hadoop/hadoop-2.5.0
+fi
 
 UNICORN_HOME=$UNICORN_HOME
 
@@ -30,7 +34,7 @@ OUTPUTTF=unicorn_tf_n
 OUTPUTIDF=unicorn_idf_n
 OUTPUTTFIDF=unicorn_tfidf_n
 OUTPUTVECTOR=unicorn_vector
-
+BLACKLISTFILE=/home/xavier/workspace/Unicorn/blacklist.txt
 #NUTCH HOME
 
 URLSEED=$NUTCH_HOME/nutch/runtime/local/urls
